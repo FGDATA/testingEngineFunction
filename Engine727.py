@@ -1,30 +1,29 @@
-from FS_propertyTree import Engine
-     ##Now the Engine and Gear classes has been imported.
+from FS_propertyTree import EngineJet_reverser
+##Importing the Default EngineJet_reverser and modify it by inheritance
 
-class Engine727(Engine):
-    """Overload the init Test"""
+class Engine727(EngineJet_reverser):
+    """
+    initialization of Classes could be a neat way of adding new nodes to the property tree
+    and expanding a basic configuration;
+    like here /engine[N]/manufacturer and 
+              /engine[N]/model
+    """
     def __init__(self):
-        Engine.__init__(self)
-        """
-        initialization of Classes could be a neat way of adding new nodes to the property tree
-        and expanding a basic configuration;
-        like here /engine[N]/manufacturer and 
-                  /engine[N]/model
-        """
+        EngineJet_reverser.__init__(self)
         self.manufacturer="Pratt & Whitney"
         self.model="JT8D-1/7/9"
     
-    """The rev thrus function"""
+    """The rev thrust function gets overloaded to mimmic the Nasal file example"""
     def toggleFastRevThrust(self):
         if not self.reverser and self.throtle_pos<=0.05:
-            self.reverser=True
             self.throtle_rev=0.5
             self.reverser_angle_rad=3.14
             self.reverser_pos_norm=1
-            return True
+            self.reverser=True
+            return self.reverser
         if self.reverser:
-            self.reverser=False
             self.throtle_rev=0
             self.reverser_angle_rad=0
             self.reverser_pos_norm=0
-            return True
+            self.reverser=False
+            return self.reverser
