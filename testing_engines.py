@@ -6,7 +6,7 @@ from FS_propertyTree import Engine
 class Engines727(Engine):  
     """The rev thrus function"""
     def toggleFastRevThrust(self):
-        self.reverser=1
+        self.reverser=True
         self.throtle_rev=0.5
         self.reverser_angle_rad=3.14
 
