@@ -3,7 +3,19 @@
 from FS_propertyTree import Engine
      ##Now the Engine Class has been imported.
 
-class Engines727(Engine):  
+class Engines727(Engine):
+    """Overload the init Test"""
+    def __init__(self):
+        Engine.__init__(self)
+        """
+        initialization of Classes could be a neat way of adding new nodes to the property tree
+        and expanding a basic configuration;
+        like here /engine[N]/manufacturer and 
+                  /engine[N]/model
+        """
+        self.manufacturer="Pratt & Whitney"
+        self.model="JT8D-1/7/9"
+    
     """The rev thrus function"""
     def toggleFastRevThrust(self):
         self.reverser=True
@@ -29,6 +41,8 @@ The Engine 1 values now are:
 #modifying and showing the second engine (engines[1]) of the stack
 engines[1].throtle_rev=0.25
 print engines[1]
+
+print "My 727 engine manufacturer is " + engines[1].manufacturer + "\n"
 
 print """
 __________________________________________________________\n
